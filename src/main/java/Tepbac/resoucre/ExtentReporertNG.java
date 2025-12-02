@@ -15,6 +15,7 @@ public class ExtentReporertNG {
         extent.setSystemInfo("Tester","Hoang Nguyen Duy Tan");
 //        extent.createTest(path);
 
+
         return extent;
 
     }
