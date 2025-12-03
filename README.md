@@ -1,20 +1,29 @@
-A scalable UI Automation Framework built using Java, Selenium WebDriver, TestNG, Cucumber, and Maven, following a Hybrid Architecture combining:
+AutomationCICD – Selenium Java Framework
+=====================================================================================
 
-Page Object Model (POM)
+A scalable UI Automation Framework built using **Java, Selenium WebDriver, TestNG, Cucumber, and Maven**, following a **Hybrid Architecture** combining:
 
-Reusable Abstract Components
+-   **Page Object Model (POM)**
 
-TestNG Tests & Suites
+-   **Reusable Abstract Components**
 
-Cucumber BDD Layer
+-   **TestNG Tests & Suites**
 
-Listeners & Retry Logic
+-   **Cucumber BDD Layer**
 
-HTML Reporting (ExtentReports)
+-   **Listeners & Retry Logic**
 
-This project is designed for real-world automation practice, CI/CD integration, and professional portfolio building.
+-   **HTML Reporting (ExtentReports)**
+
+This project is designed for real-world automation practice, CI/CD integration, and professional portfolio use.
+
+* * * * *
 
 📁 1. Project Structure
+-----------------------
+
+The structure below reflects the **actual layout** from your project:
+```bash
 SeleniumFrameworkDesign
 │── .idea/
 │── .mvn/
@@ -26,115 +35,191 @@ SeleniumFrameworkDesign
 │   │         └── Tepbac/
 │   │               ├── AbstractComponents/     # Reusable wrappers & utilities
 │   │               ├── pageobjects/            # Page Object Model classes
-│   │               └── resoucre/               # Config & helper files
+│   │               └── resoucre/               # Configuration & resource files
 │   │
 │   └── test/
 │        └── java/
 │             ├── Tepbac/
-│             │      ├── Cucumber/             # Cucumber runners
-│             │      ├── data/                 # JSON/Excel test data
+│             │      ├── Cucumber/             # Cucumber test runners
+│             │      ├── data/                 # Test data (JSON/Excel)
 │             │      └── stepDefinitions/      # StepDefinitionImpl
 │             │
 │             ├── TestComponents/
-│             │      ├── BaseTest              # WebDriver setup/teardown
-│             │      ├── Listeners             # Reports, logging
+│             │      ├── BaseTest              # Driver setup / teardown
+│             │      ├── Listeners             # ExtentReports, logging
 │             │      └── Retry                 # Retry for flaky tests
 │             │
-│             └── tests/                       # TestNG classes
+│             └── tests/                       # TestNG test classes
 │
-│── testSuites/                # regression.xml, smoke.xml
+│── target/
+│── testSuites/                # testng.xml test suites
 │── pom.xml
 │── .gitignore
-└── README.md
+└── README.md`
+```
+* * * * *
 
 ⚙️ 2. Technology Stack
-Technology	Purpose
-Java 8+	Programming language
-Selenium WebDriver	UI test automation
-TestNG	Runner, reporting, parallel execution
-Cucumber	BDD (Given-When-Then)
-Maven	Build & dependency management
-ExtentReports	HTML test reporting
-Git / GitHub	Version control
-Jenkins (Optional)	CI/CD pipeline
+----------------------
+
+| Technology | Purpose |
+| --- | --- |
+| **Java 8+** | Programming language |
+| **Selenium WebDriver** | UI automation |
+| **TestNG** | Test runner, assertions, parallel execution |
+| **Cucumber JVM** | BDD with Gherkin (Given-When-Then) |
+| **Maven** | Build & dependency management |
+| **ExtentReports** | HTML test reporting |
+| **Git / GitHub** | Version control |
+| **(Optional) Jenkins** | CI/CD pipeline |
+
+* * * * *
+
 🧩 3. Framework Highlights
-✔ Page Object Model (POM)
+--------------------------
 
-Clean separation between page logic and test logic.
+### ✔ Hybrid Framework Architecture
 
-✔ Abstract Components
+A combination of POM, reusable components, and BDD for maximum scalability.
 
-Reusable functions: waits, clicks, JS actions, screenshots.
+### ✔ Page Object Model (POM)
 
-✔ TestNG Test Structure
+Each application page is represented by a dedicated class containing locators and business functions.
 
-testng.xml suite support
+### ✔ Abstract Components
 
-parallel execution
+Centralized wrapper utilities:
 
-assertions & groups
+-   WebDriver waits
 
-✔ BDD with Cucumber
+-   Screenshot methods
 
-Readable scenarios mapped to StepDefinitionImpl.
+-   Driver utilities
 
-✔ Listeners & Retry
+### ✔ TestNG Integration
 
-Screenshot on failure
+-   testng.xml suite support
 
-Logging
+-   Parallel execution
 
-RetryAnalyzer for unstable tests
+-   Assertions
 
-✔ ExtentReports
+-   Grouping (smoke, regression)
 
-Beautiful HTML reports with logs & screenshots.
+### ✔ Cucumber BDD Layer
 
-▶️ 4. How to Run Tests
-Run all tests:
-mvn clean test
+StepDefinitionImpl maps Gherkin steps to automation logic, enabling collaboration between QA / BA / Dev.
 
-Run a specific TestNG suite:
-mvn clean test -DsuiteXmlFile=testSuites/regression.xml
+### ✔ Listeners & Retry Logic
 
-Run Cucumber tests:
-mvn test -Dcucumber.options="--tags @Smoke"
+-   Automatically logs failures
 
-📊 5. Test Reports
+-   Attaches screenshots
 
-Reports generated at:
+-   Retries flaky tests via RetryAnalyzer
 
-/reports/
+### ✔ ExtentReports
 
+Generates detailed HTML reports with timestamps, logs, and screenshots.
 
-Includes logs, screenshots, and test results.
+* * * * *
 
-🔗 6. CI/CD Integration (Optional)
+▶️ 4. How to Run the Project
+----------------------------
 
-Compatible with Jenkins:
+### **Run default TestNG suite**
 
-GitHub webhook triggers Jenkins
+`mvn test`
 
-Jenkins pulls code
+### **Run with a specific TestNG Suite**
 
-Executes Maven tests
+`mvn test -PRegression`
+`ErrorValidation`
 
-Publishes ExtentReport artifacts
+### **Run Cucumber tests**
+
+`mvn test -PCucumberTest"`
+
+### **Run tests on Edge (default)**
+
+`mvn test`
+
+### **Run tests on Chrome**
+
+`mvn test -PRegression -Dbrowser=chrome`
+
+### **Run tests on Firefox**
+
+`mvn test -PRegression -Dbrowser=Firefox`
+
+### **Run in headless mode**
+
+`mvn test -PRegression -Dbrowser=edgeheadless`
+
+* * * * *
+
+📊 5. Test Reporting (ExtentReports)
+------------------------------------
+
+Reports are generated at:
+
+`/reports/`
+
+Each report includes:
+
+-   Pass / Fail / Skip status
+
+-   Execution logs
+
+-   Timestamp
+
+-   Screenshots for failed steps
+
+-   Detailed step-by-step tracking
+
+* * * * *
+
+🔗 6. CI/CD Integration
+----------------------------------
+
+This framework is ready for integration with **Jenkins**:
+
+1.  GitHub Webhook triggers Jenkins on each commit
+
+2.  Jenkins pulls the latest code
+
+3.  Executes Maven command:
+
+    `mvn test`
+
+4.  Generates ExtentReport
+
+5.  Publishes report artifacts or sends notifications
+
+This setup enables fully automated testing pipelines.
+
+* * * * *
 
 🧭 7. Future Enhancements
+-----------------------------------
 
- Add Jenkinsfile
+To further extend the framework:
 
- Add Allure Report
+-   Add **Jenkinsfile** (declarative pipeline)
 
- Add Docker + Selenium Grid
+-   Add **Docker + Selenium Grid** for distributed parallel execution
 
- Environment-based test configs
+-   Introduce **environment profiles** (QA, Staging, Production)
 
- API testing module
+-   Add API automation module (RestAssured)
+
+-   Add database validation layer
+
+* * * * *
 
 👨‍💻 8. Author
+---------------
 
-Author: Tanduyhoang
-Role: QA Automation Engineer
-Purpose: Practicing automation framework design & CI/CD integration.
+**Author:** *Hoang Nguyen Duy Tan*\
+**Role:** QA Automation Engineer\
+**Purpose:** Building a fully structured, scalable automation framework for learning, portfolio, and CI/CD practice.
