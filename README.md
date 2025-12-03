@@ -64,14 +64,14 @@ SeleniumFrameworkDesign
 
 | Technology | Purpose |
 | --- | --- |
-| **Java 8+** | Programming language |
+| **Java 21** | Programming language |
 | **Selenium WebDriver** | UI automation |
 | **TestNG** | Test runner, assertions, parallel execution |
 | **Cucumber JVM** | BDD with Gherkin (Given-When-Then) |
 | **Maven** | Build & dependency management |
 | **ExtentReports** | HTML test reporting |
 | **Git / GitHub** | Version control |
-| **(Optional) Jenkins** | CI/CD pipeline |
+| **Jenkins** | CI/CD pipeline |
 
 * * * * *
 
